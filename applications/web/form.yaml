@@ -241,11 +241,11 @@ tabs:
     - type: string-input
       label: Post start command
       placeholder: "ex: /bin/sh -c sleep 5"
-      variable: container.lifecycle.postStart
+      variable: container.lifecycle.postStartCommand
     - type: string-input
       label: Pre stop command
       placeholder: "ex: /bin/sh -c sleep 5"
-      variable: container.lifecycle.preStop
+      variable: container.lifecycle.preStopCommand
   - name: cloud_sql_toggle
     contents:
     - type: heading

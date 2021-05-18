@@ -37,21 +37,21 @@ spec:
           - {{ $command | quote }}
           {{- end }}
           {{- end }}
-          {{- if or (.Values.container.lifecycle.postStart) (.Values.container.lifecycle.preStop) }}
+          {{- if or (.Values.container.lifecycle.postStartCommand) (.Values.container.lifecycle.preStopCommand) }}
           lifecycle:
-            {{- if .Values.container.lifecycle.postStart }}
+            {{- if .Values.container.lifecycle.postStartCommand }}
             postStart:
               exec:
                 command: 
-                {{- range $command := trim .Values.container.lifecycle.postStart | split " " }}
+                {{- range $command := trim .Values.container.lifecycle.postStartCommand | split " " }}
                 - {{ $command | quote }}
                 {{- end }}
             {{- end }}
-            {{- if .Values.container.lifecycle.preStop }}
+            {{- if .Values.container.lifecycle.preStopCommand }}
             preStop:
               exec:
                 command: 
-                {{- range $command := trim .Values.container.lifecycle.preStop | split " " }}
+                {{- range $command := trim .Values.container.lifecycle.preStopCommand | split " " }}
                 - {{ $command | quote }}
                 {{- end }}
             {{- end }}
